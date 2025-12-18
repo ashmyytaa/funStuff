@@ -61,8 +61,18 @@ function draw() {
     background(backgroundColour);
 
     stroke(45);
-    strokeWeight(2);
+    strokeWeight(3);
     noFill();
+
+
+    push();
+    noFill();
+    stroke(45);
+    strokeWeight(15);
+    rect(0, 0, width, height);
+    pop();
+
+
 
     for (let y = 0; y < rows; y++) {
         for (let x = 0; x < columns; x++) {
@@ -139,6 +149,9 @@ function draw() {
     fill(player.fill);
     rect(player.x, player.y, player.size, player.size);
     pop();
+
+
+
 }
 
 /**
