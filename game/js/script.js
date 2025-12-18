@@ -167,6 +167,9 @@ function keyPressed(event) {
         player.x += move.x;
         player.y += move.y;
 
+        player.x = constrain(player.x, 0, width - player.size);
+        player.y = constrain(player.y, 0, height - player.size);
+
     }
 }
 
