@@ -28,19 +28,6 @@ let codeString = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function setup() {
     createCanvas(2000, 1200);
 
@@ -69,6 +56,15 @@ function glitchChar(c) {
 }
     
 function draw() {
+   background(0);
+
+    fill(255, 255, 255);
+    noStroke();
+
+    scrollX += 2;
+
+    let spacing = 13;
+    let lines = codeString.split("");
 
     for (let p of particles) {
         let n = noise(p.x * 0.003, p.y * 0.003, frameCount * 0.005);
