@@ -16,9 +16,18 @@ let totalParticles = 5000;
 
 let scrollX = 0;
 let glitchTimers = [];
-let glitchDuration = 5;
+let glitchDuration = 40;
 
 let codeString = `
+
+
+
+
+
+
+
+
+
 
 
 
@@ -45,16 +54,12 @@ function setup() {
         });
     }
 }
-
 function glitchChar(c) {
-    let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]();=+-*/";
-
     if (random() < 0.85) return c;
 
     let index = floor(random(chars.length));
     return chars[index];
 }
-    
 function draw() {
    background(0);
 
@@ -71,9 +76,6 @@ function draw() {
         let angle = n * TWO_PI * 2;
 
         p.x += cos(angle) * p.speed;
-        p.y += sin(angle) * p.speed;
-
-        p.x += (p.startX - p.x) * 0.007;
         p.y += (p.startY - p.y) * 0.007;
 
         let sparkle = noise(p.seed + frameCount * 0.08);
@@ -87,14 +89,13 @@ function draw() {
         pop();
     }
 }
-
 `;
 
 function setup() {
-    createCanvas(2000, 1200);
+    createCanvas(600, 1200);
 
     textFont("Courier New");
-    textSize(15);
+    textSize(20);
 
     for (let i = 0; i < totalParticles; i++) {
         let x = random(width);
