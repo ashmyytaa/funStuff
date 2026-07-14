@@ -11,7 +11,7 @@ let x4, y4;
 let offset = 10; //initial offset value
 
 function setup() {
-    createCanvas(1200, 600);
+    createCanvas(3840 , 3003 ); //added this pixel resolution regarding specific spec mentionned by Foil Gallery
     frameRate(30); //Frame rate for a slower movement
 }
 
