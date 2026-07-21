@@ -19,8 +19,14 @@ function draw() {
         let t = map(i, 300, 0, 0, 1);
 
         // Two soft colors
-        let c1 = color(242, 133, 0);   //tangerine
-        let c2 = color(107, 213, 227);   //blue like the sea
+        let c1 = color(255, 0, 0);   //tangerine
+        let c2 = color(32, 17, 143);   //blue like the sea
+
+        //COLOR COMBOS
+
+        //tangerine + blue = (242, 133, 0) & (107, 213, 227)
+        //pink + green = (237, 33, 132) & (32, 237, 0)
+        //purple + ywllow = (178, 0, 237) & (237, 225, 0)
 
         // Slowly shift between the colors
         let amount = 0.5 + 0.5 * sin(frameCount * 0.05 + t * 3);
