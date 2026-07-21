@@ -6,19 +6,22 @@ function setup() {
     createCanvas(1200, 600);
     noStroke();
 
-    for (let i = 0; i < 60; i++) {
+    let sakuraColorOne = color(255, 242, 245); // lighter color 
+    let sakuraColorTwo = color(240, 141, 182); // more pinker color
+
+    for (let i = 0; i < 60; i++) { // 60 flowers in total
         flowers.push({
             x: random(width),
             y: random(height),
             size: random(60, 85),
-            dx: random(0.6, 1.5),
-            dy: random(-0.5, 0.5),
-            angle: random(TWO_PI),
-            spin: random(-0.03, 0.03),
+            dx: random(0.5, 1.9), //change in x
+            dy: random(-0.5, 0.5), //change in y
+            angle: random(TWO_PI / 2),
+            spin: random(-0.05, 0.04),
 
             //2 colors for each flower's gradient
-            c1: color(random(255), random(120, 220), random(180, 255)),
-            c2: color(random(120, 255), random(180, 255), random(255))
+            c1: lerpColor(sakuraColorOne, sakuraColorTwo, random()),
+            c2: lerpColor(sakuraColorOne, sakuraColorTwo, random())
         });
     }
 }
@@ -49,14 +52,10 @@ function draw() {
     }
 }
 
-function drawBackground() {
+function drawBackground() { // i do have a bg color, but it can be removed upon projection surface
 
     for (let y = 0; y < height; y++) {
-        let c = lerpColor(
-            color(165, 220, 255),
-            color(235, 248, 255),
-            y / height
-        );
+        let c = lerpColor(color(165, 220, 255), color(235, 248, 255), y / height);
         stroke(c);
         line(0, y, width, y);
     }
@@ -78,33 +77,17 @@ function drawFlower(f) {
         for (let i = 12; i > 0; i--) {
 
             let c = lerpColor(f.c1, f.c2, i / 12);
-
             fill(c);
-
-            ellipse(
-                px,
-                py,
-                (f.size * 0.6) * i / 12,
-                (f.size * 0.6) * i / 12
-            );
+            ellipse(px, py, (f.size * 0.6) * i / 12, (f.size * 0.6) * i / 12);
         }
     }
 
     //gradient flower center
     for (let i = 12; i > 0; i--) {
 
-        let c = lerpColor(
-            color(255, 250, 180),
-            color(255, 185, 40),
-            i / 12
-        );
-
+        let c = lerpColor(color(255, 250, 180), color(255, 185, 40), i / 12);
         fill(c);
-        ellipse(
-            0,
-            0,
-            (f.size * 0.3) * i / 12
-        );
+        ellipse(0, 0, (f.size * 0.3) * i / 12);
     }
     pop();
 }
