@@ -1,7 +1,7 @@
 "use strict";
 
-let smokeClouds = [];
-let whiteClouds = [];
+let smoke = [];
+let clouds = [];
 
 function setup() {
     createCanvas(1200, 600);
@@ -9,7 +9,7 @@ function setup() {
 
     //smoke array push
     for (let i = 0; i < 65; i++) {
-        smokeClouds.push({
+        smoke.push({
             x: random(width),
             y: random(100, 450),
             size: random(60, 140),
@@ -18,7 +18,7 @@ function setup() {
     }
     //clouds array push
     for (let i = 0; i < 8; i++) {
-        whiteClouds.push({
+        clouds.push({
             x: random(width),
             y: random(40, 220),
             size: random(80, 150),
@@ -33,12 +33,11 @@ function draw() {
 }
 
 function drawSky() {
-    // Sky gradient
+    //sky gradient
     for (let y = 0; y < height; y++) {
         let topColor = color(90, 130, 160);
         let bottomColor = color(190, 160, 130);
         let skyColor = lerpColor(topColor, bottomColor, y / height);
-
         stroke(skyColor);
         line(0, y, width, y);
     }
@@ -46,17 +45,16 @@ function drawSky() {
 }
 
 function drawClouds() {
-    // Solid white clouds
     fill(255, 255, 255, 220);
 
-    for (let i = 0; i < whiteClouds.length; i++) {
+    for (let i = 0; i < clouds.length; i++) {
 
-        let cloud = whiteClouds[i];
+        let cloud = clouds[i];
         cloud.x += cloud.speed;
 
         if (cloud.x > width + cloud.size) {
             cloud.x = -cloud.size;
-            cloud.y = random(40, 220);
+            cloud.y = random(10, 300);
         }
 
         //middle ellipse body
@@ -74,10 +72,9 @@ function drawClouds() {
 }
 
 function drawSmoke() {
-    for (let i = 0; i < smokeClouds.length; i++) {
+    for (let i = 0; i < smoke.length; i++) {
 
-        let cloud = smokeClouds[i];
-
+        let cloud = smoke[i];
         cloud.x += cloud.speed;
         cloud.y += sin(frameCount * 0.01 + i) * 0.2;
 
@@ -89,5 +86,6 @@ function drawSmoke() {
         ellipse(cloud.x, cloud.y, cloud.size, cloud.size * 0.7);
         ellipse(cloud.x + cloud.size * 0.3, cloud.y - 20, cloud.size * 0.8, cloud.size * 0.6);
         ellipse(cloud.x - cloud.size * 0.3, cloud.y + 15, cloud.size * 0.7, cloud.size * 0.5);
+
     }
 }
