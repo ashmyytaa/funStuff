@@ -13,7 +13,7 @@ function setup() {
         flowers.push({
             x: random(width),
             y: random(height),
-            size: random(60, 85),
+            size: random(60, 80),
             dx: random(0.5, 1.9), //change in x
             dy: random(-0.5, 0.5), //change in y
             angle: random(TWO_PI / 2),
@@ -33,11 +33,11 @@ function draw() {
     for (let i = 0; i < flowers.length; i++) {
         let f = flowers[i];
 
-        f.x += f.dx;
+        f.x += f.dx; //assigning speed on the x and y to each flower + spin
         f.y += f.dy;
         f.angle += f.spin;
 
-        //bounce off canvas edges
+        //flowers bouncing off the canvas edges
         if (f.x < f.size / 2 || f.x > width - f.size / 2) {
             f.dx *= -1;
         }
@@ -46,22 +46,22 @@ function draw() {
         }
     }
 
-    //dsraw flowers
+    //draw flowers
     for (let f of flowers) {
         drawFlower(f);
     }
 }
 
 function drawBackground() { // i do have a bg color, but it can be removed upon projection surface
-
     for (let y = 0; y < height; y++) {
-        let c = lerpColor(color(165, 220, 255), color(235, 248, 255), y / height);
+        let c = lerpColor(color(165, 220, 255), color(235, 248, 255), y / height); //light blue gradiant sky
         stroke(c);
         line(0, y, width, y);
     }
     noStroke();
 }
 
+//draw dlower function
 function drawFlower(f) {
     push();
     translate(f.x, f.y);
@@ -84,8 +84,7 @@ function drawFlower(f) {
 
     //gradient flower center
     for (let i = 12; i > 0; i--) {
-
-        let c = lerpColor(color(255, 250, 180), color(255, 185, 40), i / 12);
+        let c = lerpColor(color(255, 250, 180), color(255, 185, 40), i / 12); //orange-yellow gradiant color for the middle
         fill(c);
         ellipse(0, 0, (f.size * 0.3) * i / 12);
     }
