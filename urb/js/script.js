@@ -86,6 +86,5 @@ function drawSmoke() {
         ellipse(cloud.x, cloud.y, cloud.size, cloud.size * 0.7);
         ellipse(cloud.x + cloud.size * 0.3, cloud.y - 20, cloud.size * 0.8, cloud.size * 0.6);
         ellipse(cloud.x - cloud.size * 0.3, cloud.y + 15, cloud.size * 0.7, cloud.size * 0.5);
-
     }
 }

@@ -19,8 +19,8 @@ function draw() {
         let t = map(i, 300, 0, 0, 1);
 
         // Two soft colors
-        let c1 = color(168, 50, 50);   //tangerine
-        let c2 = color(168, 162, 50);   //blue like the sea
+        let c1 = color(86, 245, 107);
+        let c2 = color(242, 128, 203);
 
         //COLOR COMBOS
 
@@ -38,6 +38,12 @@ function draw() {
         //191,255,209 + 99,10,10
         //255,255,122 + 169,240,165
         ////pink + white = (235, 73, 140) & (240, 213, 224)
+
+
+        //DAY THREEEE
+        // let c1 = color(114, 109, 168);
+        // let c2 = color(190, 231, 232);   
+
 
 
 
